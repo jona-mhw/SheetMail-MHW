@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crear Borrador Gmail</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 15px;
+      }
+      form {
+        border: 1px solid #ccc;
+        padding: 25px;
+        border-radius: 8px;
+      }
+      label, input {
+        margin-bottom: 20px;
+        display: block;
+      }
+      #resultado {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Generar borrador en Gmail 💌</h2>
+    <form id="myForm">
+      <label for="rango">Ingrese el nombre del Rango:</label>
+      <input type="text" id="rango" name="rango">
+      <button type="button" onclick="crearBorrador()">Generar Borrador Gmail 🚀</button>
+    </form>
+    <div id="resultado"></div>
+    <script>
+      function crearBorrador() {
+        var form = document.getElementById("myForm");
+        var rango = form.rango.value;
+        google.script.run.withSuccessHandler(function(response) {
+          document.getElementById("resultado").innerText = response;
+        }).generarBorradorGmail(rango);
+      }
+    </script>
+  </body>
+</html>
